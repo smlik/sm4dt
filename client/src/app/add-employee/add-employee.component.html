@@ -1,0 +1,56 @@
+<div mat-dialog-title>Add Employee</div>
+<div mat-dialog-content>
+  <form [formGroup]="addEmployee" (ngSubmit)="addNewEmployee()">
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" type="text" formControlName="firstName" required>
+        <mat-error *ngIf="submitted && f.firstName.errors?.required">First name is required</mat-error>
+        <mat-error *ngIf="submitted && f.firstName.errors?.pattern">Minimum 2 characters needed</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" type="text" formControlName="lastName" required>
+        <mat-error *ngIf="submitted && f.lastName.errors?.required">Last name is required</mat-error>
+        <mat-error *ngIf="submitted && f.lastName.errors?.pattern">Minimum 2 characters needed</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="mail@gmail.com" formControlName="email" type="email" required>
+        <mat-error *ngIf="submitted && f.email.errors?.required">Email is required</mat-error>
+        <mat-error *ngIf="submitted && f.email.errors?.pattern">Email is not valid</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Phone number</mat-label>
+        <input matInput placeholder="92-3121234567" formControlName="phoneNumber" type="tel" required>
+        <mat-error *ngIf="submitted && f.phoneNumber.errors?.required">Phone number is required</mat-error>
+        <mat-error *ngIf="submitted && f.phoneNumber.errors?.pattern">Only numbers and dashes are allowed</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Hire Date</mat-label>
+        <input matInput [matDatepicker]="hireDate" formControlName="hireDate" required>
+        <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
+        <mat-datepicker #hireDate></mat-datepicker>
+        <mat-error *ngIf="submitted && f.hireDate.errors?.required">Hire date is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Salary</mat-label>
+        <input matInput placeholder="Salary" formControlName="salary" type="number" required>
+        <mat-error *ngIf="submitted && f.salary.errors?.required">Salary is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group" style="float: right">
+      <button type="submit" mat-stroked-button color="primary">Save</button>
+    </div>
+  </form>
+</div>
